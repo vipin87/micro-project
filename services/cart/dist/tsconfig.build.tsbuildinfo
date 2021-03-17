@@ -3646,6 +3646,11 @@
         "signature": "262e69fffa6b50b37980d39c49a6d51a06f20ce72bfa2bc72b6bbddc64ca4e48",
         "affectsGlobalScope": false
       },
+      "../src/migrations/1615984652145-cart_initial.ts": {
+        "version": "882ce2f308a826a1e65983e38df85a2de236adcd201d82a31de66522a716ed79",
+        "signature": "06046f22ab31add64e78df3ed98609ad3a9c2e15839d2dd91399b34f996a29d7",
+        "affectsGlobalScope": false
+      },
       "../../../node_modules/@types/anymatch/index.d.ts": {
         "version": "48b52264fa193879a074197839dbb4796fa07e86350ff888e5361e06aa46df76",
         "signature": "48b52264fa193879a074197839dbb4796fa07e86350ff888e5361e06aa46df76",
@@ -6927,6 +6932,9 @@
         "../../../node_modules/@types/node/console.d.ts",
         "../src/app.module.ts"
       ],
+      "../src/migrations/1615984652145-cart_initial.ts": [
+        "../../../node_modules/typeorm/index.d.ts"
+      ],
       "../src/ormconfig.ts": [
         "../../../node_modules/dotenv/types/index.d.ts",
         "../../../node_modules/typeorm/index.d.ts"
@@ -9858,6 +9866,9 @@
       "../src/app.controller.ts": [
         "../src/app.service.ts"
       ],
+      "../src/migrations/1615984652145-cart_initial.ts": [
+        "../../../node_modules/typeorm/index.d.ts"
+      ],
       "../src/ormconfig.ts": [
         "../../../node_modules/typeorm/index.d.ts"
       ]
@@ -10654,6 +10665,7 @@
       "../src/cart/cart.module.ts",
       "../src/cart/entities/cart.entity.ts",
       "../src/main.ts",
+      "../src/migrations/1615984652145-cart_initial.ts",
       "../src/ormconfig.ts"
     ]
   },

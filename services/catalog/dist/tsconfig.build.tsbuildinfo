@@ -3646,6 +3646,11 @@
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
+      "../src/migrations/1615984749083-catalog_initial.ts": {
+        "version": "7ecd82ef9dbdab616969a75137f5bd85f9c0803301ea4f8c57800ea1f9f77e6a",
+        "signature": "7bbf7edd43f11365d607dd739e5fbe8a792c0fa7dcf183262d927544c68e29c1",
+        "affectsGlobalScope": false
+      },
       "../../../node_modules/@types/anymatch/index.d.ts": {
         "version": "48b52264fa193879a074197839dbb4796fa07e86350ff888e5361e06aa46df76",
         "signature": "48b52264fa193879a074197839dbb4796fa07e86350ff888e5361e06aa46df76",
@@ -6921,6 +6926,9 @@
         "../../../node_modules/@types/node/console.d.ts",
         "../src/app.module.ts"
       ],
+      "../src/migrations/1615984749083-catalog_initial.ts": [
+        "../../../node_modules/typeorm/index.d.ts"
+      ],
       "../src/ormconfig.ts": [
         "../../../node_modules/dotenv/types/index.d.ts",
         "../../../node_modules/typeorm/index.d.ts"
@@ -9860,6 +9868,9 @@
       "../src/app.controller.ts": [
         "../src/app.service.ts"
       ],
+      "../src/migrations/1615984749083-catalog_initial.ts": [
+        "../../../node_modules/typeorm/index.d.ts"
+      ],
       "../src/ormconfig.ts": [
         "../../../node_modules/typeorm/index.d.ts"
       ]
@@ -10654,6 +10665,7 @@
       "../src/app.module.ts",
       "../src/app.service.ts",
       "../src/main.ts",
+      "../src/migrations/1615984749083-catalog_initial.ts",
       "../src/ormconfig.ts",
       "../src/product/entities/product.entity.ts",
       "../src/product/product.module.ts"
