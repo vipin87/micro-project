@@ -1,0 +1,14 @@
+{
+    "name": "micro-project",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "vipin87 <kumar.vipin@thinksys.com>",
+    "license": "MIT",
+    "private": true,
+    "workspaces": [
+        "services/*"
+    ],
+    "devDependencies": {
+        "lerna": "^4.0.0"
+    }
+}

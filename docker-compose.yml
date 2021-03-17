@@ -1,0 +1,106 @@
+version: '2'
+services:
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    logging:
+      driver: none
+    ports:
+      - "2181"
+
+  kafka:
+    image: wurstmeister/kafka
+    logging:
+      driver: none
+    ports:
+      - "9092"
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_HOST_NAME: 192.168.29.175
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui
+    logging:
+      driver: none
+    ports:
+      - "9000:8080"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+
+  postgres:
+    image: postgres
+    logging:
+      driver: none
+    environment:
+      POSTGRES_USER: micro
+      POSTGRES_PASSWORD: micro
+
+  adminer:
+    image: adminer
+    logging:
+      driver: none
+    ports:
+      - 4001:8080
+
+  # keycloak:
+  #   image: jboss/keycloak:12.0.4
+  #   ports:
+  #     - 3100:8080
+  #   environment:
+  #     KEYCLOAK_USER: micro
+  #     KEYCLOAK_PASSWORD: micro
+  #     DB_ADDR: postgres
+  #     DB_PORT: 5432
+  #     DB_DATABASE: micro
+  #     DB_SCHEMA: auth
+  #     DB_USER: micro
+  #     DB_PASSWORD: micro
+
+  api-gateway:
+    build:
+      context: .
+      dockerfile: ./docker/api-gateway.Dockerfile
+    command: yarn workspace @micro-project/api-gateway start:dev
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 3000:3000
+      - 9229:9229
+    environment:
+      KAFKA_BROKER: kafka:9092
+    depends_on:
+      - kafka
+      - zookeeper
+
+  ms-catalog:
+    build:
+      context: .
+      dockerfile: ./docker/catalog.Dockerfile
+    command: yarn workspace @micro-project/catalog start:dev
+    volumes:
+      - ./:/usr/src/app
+    environment:
+      KAFKA_BROKER: kafka:9092
+    depends_on:
+      - kafka
+      - zookeeper
+
+  ms-cart:
+    build:
+      context: .
+      dockerfile: ./docker/cart.Dockerfile
+    command: yarn workspace @micro-project/cart start:dev
+    volumes:
+      - ./:/usr/src/app
+    environment:
+      KAFKA_BROKER: kafka:9092
+    depends_on:
+      - kafka
+      - zookeeper
+  
+  # zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties & kafka-server-start /usr/local/etc/kafka/server.properties
